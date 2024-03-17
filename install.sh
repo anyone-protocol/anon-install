@@ -43,8 +43,8 @@ IPv6Exit 0
 ExitPolicy reject *:*
 ExitPolicy reject6 *:*
 
-$( [[ -n "$BANDWIDTH_RATE" ]] && echo "BandwidthRate $BANDWIDTH_RATE" )
-$( [[ -n "$BANDWIDTH_BURST" ]] && echo "BandwidthBurst $BANDWIDTH_BURST" )
+$( [[ -n "$BANDWIDTH_RATE" ]] && echo "BandwidthRate $BANDWIDTH_RATE Mbit")
+$( [[ -n "$BANDWIDTH_BURST" ]] && echo "BandwidthBurst $BANDWIDTH_BURST Mbit" )
 Nickname $NICKNAME
 Contactinfo $CONTACT_INFO
 EOF
