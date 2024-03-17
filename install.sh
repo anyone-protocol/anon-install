@@ -9,7 +9,7 @@ fi
 
 sudo wget -qO- https://deb.dmz.ator.dev/anon.asc | sudo tee /etc/apt/trusted.gpg.d/anon.asc
 
-sudo echo "deb [signed-by=/etc/apt/trusted.gpg.d/anon.asc] https://deb.dmz.ator.dev anon-stage-$VERSION_CODENAME main" | sudo tee /etc/apt/sources.list.d/anon.list
+sudo echo "deb [signed-by=/etc/apt/trusted.gpg.d/anon.asc] https://deb.dmz.ator.dev anon-live-$VERSION_CODENAME main" | sudo tee /etc/apt/sources.list.d/anon.list
 
 sudo apt-get update --yes && sudo apt-get install anon --yes
 
