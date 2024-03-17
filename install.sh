@@ -9,7 +9,7 @@ fi
 
 sudo wget -qO- https://deb.dmz.ator.dev/anon.asc | sudo tee /etc/apt/trusted.gpg.d/anon.asc
 
-sudo echo "deb [signed-by=/etc/apt/trusted.gpg.d/anon.asc] https://deb.dmz.ator.dev anon-live-$VERSION_CODENAME main" | sudo tee /etc/apt/sources.list.d/anon.list
+sudo echo "deb [signed-by=/etc/apt/trusted.gpg.d/anon.asc] https://deb.dmz.ator.dev anon-stage-$VERSION_CODENAME main" | sudo tee /etc/apt/sources.list.d/anon.list
 
 sudo apt-get update --yes && sudo apt-get install anon --yes
 
@@ -33,9 +33,19 @@ done
 read -p "Enter BandwidthRate in Mbit (leave empty to skip): " BANDWIDTH_RATE
 read -p "Enter BandwidthBurst in Mbit (leave empty to skip): " BANDWIDTH_BURST
 
+while true; do
+        read -rp "Enter ORPOrt [Default: 9001]: " OR_PORT
+        OR_PORT="${OR_PORT:-9001}"  # Set a default value if no input is provided
+        if [[ $OR_PORT =~ ^[0-9]+$ ]]; then
+                break  # Break out of the loop if input consists only of numbers
+        else
+                echo "Error: Invalid ORPort format. Must contain only numbers." >&2
+        fi
+done
+
 cat <<EOF | sudo tee /etc/anon/anonrc >/dev/null
 Log notice file /var/log/anon/notices.log
-ORPort 9001
+ORPort $OR_PORT
 ControlPort 9051
 SocksPort 0
 ExitRelay 0
@@ -43,7 +53,7 @@ IPv6Exit 0
 ExitPolicy reject *:*
 ExitPolicy reject6 *:*
 
-$( [[ -n "$BANDWIDTH_RATE" ]] && echo "BandwidthRate $BANDWIDTH_RATE Mbit")
+$( [[ -n "$BANDWIDTH_RATE" ]] && echo "BandwidthRate $BANDWIDTH_RATE Mbit" )
 $( [[ -n "$BANDWIDTH_BURST" ]] && echo "BandwidthBurst $BANDWIDTH_BURST Mbit" )
 Nickname $NICKNAME
 Contactinfo $CONTACT_INFO
