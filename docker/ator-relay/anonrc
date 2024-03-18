@@ -1,0 +1,40 @@
+# Run Anon as a regular user (do not change this)
+User anond
+DataDirectory /var/lib/anon
+
+#Optional for NYX
+ControlSocket /run/anon/control
+ControlSocketsGroupWritable 1
+CookieAuthentication 1
+CookieAuthFile /run/anon/control.authcookie
+CookieAuthFileGroupReadable 1
+
+# Logging
+Log notice file /etc/anon/notices.log
+
+# Port to advertise for incoming Anon connections.
+ORPort 9001          # common ports are 9001, 443
+#ORPort [IPv6-address]:9001
+
+# Mirror directory information for others (optional, not used on bridge)
+#DirPort 9030                 # common ports are 9030, 80
+
+# Run Anon only as a server (no local applications)
+SocksPort 0
+
+# Run as a relay only (change policy to enable exit node)
+ExitPolicy reject *:* 
+ExitPolicy reject6 *:*
+ExitRelay 0
+IPv6Exit 0
+
+# Set limits
+#AccountingMax 40 TB
+#RelayBandwidthRate 80 Mbit      # Throttle traffic to
+#RelayBandwidthBurst 100 Mbit     # But allow bursts up to
+#MaxMemInQueues 1855 MB        # 90% of 2Gb RAM
+
+Nickname ANONRelay    #Between 1-19 characters, only [a-zA-Z0-9] and no spaces.
+Contactinfo Anon <anon AT example DOT com>
+
+#MyFamily
