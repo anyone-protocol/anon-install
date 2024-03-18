@@ -1,0 +1,14 @@
+version: '2.2'
+services:
+  relay:
+    image: svforte/anon-live:latest
+    container_name: ator-relay
+    init: true
+    restart: unless-stopped
+    ports:
+      - "9001:9001"
+      - "9030:9030"
+    volumes:
+      - /opt/anon/var/lib/anon/:/var/lib/anon/
+      - /opt/anon/etc/anon/:/etc/anon/
+      - /opt/anon/run/anon/:/run/anon/ #Optional dir for NYX
