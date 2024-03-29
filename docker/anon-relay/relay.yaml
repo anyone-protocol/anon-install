@@ -1,7 +1,7 @@
 version: '2.2'
 services:
   relay:
-    image: svforte/anon:latest
+    image: svforte/anon:13c778fbda4d4aada8776eed18029cb55aa222d7
     container_name: anon-relay
     init: true
     restart: unless-stopped
