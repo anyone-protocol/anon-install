@@ -7,7 +7,6 @@ services:
     restart: unless-stopped
     ports:
       - "9001:9001"
-      - "9030:9030"
     volumes:
       - /opt/anon/var/lib/anon/:/var/lib/anon/
       - /opt/anon/etc/anon/:/etc/anon/
