@@ -1,5 +1,8 @@
 #!/bin/bash
 
+RED='\033[0;31m'
+NOCOLOR='\033[0m'
+
 . /etc/os-release
 
 if ! command -v sudo &>/dev/null; then
@@ -11,7 +14,14 @@ sudo wget -qO- https://deb.dmz.ator.dev/anon.asc | sudo tee /etc/apt/trusted.gpg
 
 sudo echo "deb [signed-by=/etc/apt/trusted.gpg.d/anon.asc] https://deb.dmz.ator.dev anon-live-$VERSION_CODENAME main" | sudo tee /etc/apt/sources.list.d/anon.list
 
-sudo apt-get update --yes && sudo apt-get install anon --yes
+sudo apt-get update --yes
+
+sudo apt-get install anon --yes
+
+if [ $? -ne 0 ]; then
+    echo -e "${RED}\nFailed to install the Anon package. Quitting installation.\n${NOCOLOR}"
+    exit 1
+fi
 
 sudo mv /etc/anon/anonrc /etc/anon/anonrc.bak
 
