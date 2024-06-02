@@ -19,7 +19,7 @@ sudo apt-get update --yes
 sudo apt-get install anon --yes
 
 if [ $? -ne 0 ]; then
-    echo -e "${RED}\nFailed to install the Anon package. Quitting installation.\n${NOCOLOR}"
+    echo -e "${RED}\nFailed to install the Anon package. Quitting installation. Ensure $PRETTY_NAME $VERSION_CODENAME is supported.\n${NOCOLOR}"
     exit 1
 fi
 
