@@ -66,7 +66,7 @@ ExitPolicy reject6 *:*
 $( [[ -n "$BANDWIDTH_RATE" ]] && echo "BandwidthRate $BANDWIDTH_RATE Mbit" )
 $( [[ -n "$BANDWIDTH_BURST" ]] && echo "BandwidthBurst $BANDWIDTH_BURST Mbit" )
 Nickname $NICKNAME
-Contactinfo $CONTACT_INFO
+ContactInfo $CONTACT_INFO
 EOF
 
 if [[ -n "$MY_FAMILY" ]]; then
