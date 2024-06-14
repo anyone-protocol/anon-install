@@ -33,6 +33,19 @@ done
 
 read -p "Enter your contact information for the Anon Relay: " CONTACT_INFO
 
+read -p "Do you want to link your Ethereum wallet address now? (yes/no): " HAS_ETH_WALLET
+if [[ "$HAS_ETH_WALLET" =~ ^[Yy][Ee][Ss]$ ]]; then
+    while true; do
+        read -p "Enter your Ethereum wallet address: " ETH_WALLET
+        if [[ "$ETH_WALLET" =~ ^0x[a-fA-F0-9]{40}$ ]]; then
+            CONTACT_INFO="$CONTACT_INFO @anon: $ETH_WALLET"
+            break
+        else
+            echo "Error: Invalid Ethereum wallet address format. Must start with '0x' followed by 40 hexadecimal characters."
+        fi
+    done
+fi
+
 read -p "Enter comma-separated fingerprints for your relay's family (leave empty to skip): " MY_FAMILY
 
 while [[ -n "$MY_FAMILY" && ! "$MY_FAMILY" =~ ^([A-Z0-9]+,)*[A-Z0-9]+$ ]]; do
