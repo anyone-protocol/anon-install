@@ -10,9 +10,9 @@ if ! command -v sudo &>/dev/null; then
     exit 1
 fi
 
-sudo wget -qO- https://deb.dmz.ator.dev/anon.asc | sudo tee /etc/apt/trusted.gpg.d/anon.asc
+sudo wget -qO- https://deb.en.anyone.tech/anon.asc | sudo tee /etc/apt/trusted.gpg.d/anon.asc
 
-sudo echo "deb [signed-by=/etc/apt/trusted.gpg.d/anon.asc] https://deb.dmz.ator.dev anon-live-$VERSION_CODENAME main" | sudo tee /etc/apt/sources.list.d/anon.list
+sudo echo "deb [signed-by=/etc/apt/trusted.gpg.d/anon.asc] https://deb.en.anyone.tech anon-live-$VERSION_CODENAME main" | sudo tee /etc/apt/sources.list.d/anon.list
 
 sudo apt-get update --yes
 
