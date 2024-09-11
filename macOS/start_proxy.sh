@@ -26,7 +26,7 @@ sleep 1
 
 networksetup -setsocksfirewallproxy "Wi-Fi" 127.0.0.1 9050
 networksetup -setsecurewebproxy "Wi-Fi" 127.0.0.1 9058
-networksetup -setwebproxy "Wi-Fi" 127.0.0.1 9050
+networksetup -setwebproxy "Wi-Fi" 127.0.0.1 9058
 
 networksetup -setsocksfirewallproxystate "Wi-Fi" on
 networksetup -setsecurewebproxystate "Wi-Fi" on
