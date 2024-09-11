@@ -44,7 +44,7 @@ function handle_sigint() {
   networksetup -setsecurewebproxystate "Wi-Fi" off
   networksetup -setsecurewebproxystate "Wi-Fi" off
   networksetup -setwebproxystate "Wi-Fi" off
-  rm -f anon-live-macos-$(uname -p)64.zip
+  rm anon-live-macos-$(uname -p)64.zip
   rm anon
   rm anonrc
   exit 0
