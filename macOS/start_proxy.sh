@@ -1,9 +1,7 @@
 #!/bin/bash
 
-if [[ "$(sw_vers --productName)" != "macOS" ]];then
-  echo "This script is for macOS"
-  exit 1
-fi
+if [[ "$(sw_vers --productName)" == "macOS" ]];then
+
 
 if [[ ! -f anon-live-macos-$(uname -p)64.zip ]];then
   wget -q https://github.com/anyone-protocol/ator-protocol/releases/download/v0.4.9.6/anon-live-macos-$(uname -p)64.zip
@@ -56,3 +54,8 @@ while true; do
   echo "Press Cmd+C to quit"
   sleep 18000
 done
+
+else
+  echo "This script is for macOS"
+  exit 1
+fi
