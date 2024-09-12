@@ -4,7 +4,7 @@ if [[ "$(sw_vers --productName)" == "macOS" ]];then
 
 
     if [[ ! -f anon-live-macos-$(uname -p)64.zip ]];then
-      curl -o anon.zip -fSLO https://github.com/anyone-protocol/ator-protocol/releases/download/v0.4.9.6/anon-live-macos-$(uname -p)64.zip
+      curl -o anon.zip -fsSLO https://github.com/anyone-protocol/ator-protocol/releases/download/v0.4.9.6/anon-live-macos-$(uname -p)64.zip
     fi
     
     unzip anon.zip anon > /dev/null 2>&1
