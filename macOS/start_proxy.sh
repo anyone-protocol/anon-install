@@ -4,10 +4,10 @@ if [[ "$(sw_vers --productName)" == "macOS" ]];then
 
 
     if [[ ! -f anon-live-macos-$(uname -p)64.zip ]];then
-      wget -q https://github.com/anyone-protocol/ator-protocol/releases/download/v0.4.9.6/anon-live-macos-$(uname -p)64.zip
+      curl -o anon.zip -fSLO https://github.com/anyone-protocol/ator-protocol/releases/download/v0.4.9.6/anon-live-macos-$(uname -p)64.zip
     fi
     
-    unzip -o  anon-live-macos-$(uname -p)64.zip anon > /dev/null 2>&1
+    unzip anon.zip anon > /dev/null 2>&1
     
     kill $(pgrep anon) > /dev/null 2>&1
     
@@ -37,7 +37,7 @@ if [[ "$(sw_vers --productName)" == "macOS" ]];then
       networksetup -setsecurewebproxystate "Wi-Fi" off
       networksetup -setsecurewebproxystate "Wi-Fi" off
       networksetup -setwebproxystate "Wi-Fi" off
-      rm anon-live-macos-$(uname -p)64.zip
+      rm anon.zip
       rm anon
       rm anonrc
       exit 0
