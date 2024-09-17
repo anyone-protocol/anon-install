@@ -46,7 +46,7 @@ if [[ "$(sw_vers --productName)" == "macOS" ]];then
     
     while true; do
       echo "Press Cmd+C to quit"
-      sleep 18000
+      sleep 600
     done
 
 else
