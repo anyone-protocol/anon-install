@@ -35,7 +35,6 @@ if [[ "$(sw_vers --productName)" == "macOS" ]];then
     function handle_sigint() {
       networksetup -setsocksfirewallproxystate "Wi-Fi" off
       networksetup -setsecurewebproxystate "Wi-Fi" off
-      networksetup -setsecurewebproxystate "Wi-Fi" off
       networksetup -setwebproxystate "Wi-Fi" off
       rm anon.zip
       rm anon
