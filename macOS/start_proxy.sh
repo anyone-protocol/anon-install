@@ -45,7 +45,7 @@ if [[ "$(sw_vers --productName)" == "macOS" ]];then
     trap handle_sigint INT
     
     while true; do
-      echo "Press Cmd+C to quit"
+      echo "Press Cmd+C to quit proxy"
       sleep 600
     done
 
