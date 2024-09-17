@@ -27,9 +27,9 @@ if [[ "$(sw_vers --productName)" == "macOS" ]];then
     
     sleep 1
     
-    ExitIP="$(curl -s --socks5 127.0.0.1:9050 https://check.en.anyone.tech/api/ip -s | jq .IP | cut -d'"' -f2)"
-    IsAnon="$(curl -s --socks5 127.0.0.1:9050 https://check.en.anyone.tech/api/ip -s | jq .IsAnon)"
-    ExitCountry="$(whois $ExitIP | grep -m1 country | awk '{print $2}')"
+	ExitIP="$(curl -s --socks5 127.0.0.1:9050 https://check.en.anyone.tech/api/ip -s | cut -d'"' -f6)"
+	IsAnon="$(curl -s --socks5 127.0.0.1:9050 https://check.en.anyone.tech/api/ip -s | cut -d':' -f2 | cut -d',' -f1)"
+	ExitCountry="$(curl --socks4 127.0.0.1:9050 -s https://ipinfo.io | grep country | cut -d'"' -f4)"
     echo -e "\nExit IP: $ExitIP\nExit Country: $ExitCountry\nIs Anon: $IsAnon\n"
     
     function handle_sigint() {
