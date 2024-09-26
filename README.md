@@ -6,7 +6,7 @@ This repository contains a script for installing the Anon Relay on a Debian-base
 ## Installation
 To install the Anon Relay, run the following command in your terminal:
 ```bash
-sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ATOR-Development/anon-install/main/install.sh)"
+sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/anyone-protocol/anon-install/refs/heads/main/install.sh)"
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ Once installed, the Anon Relay can be configured with user-defined settings. Fol
 This command installs the Anon Relay on your Debian-based Linux system. It prompts you to enter the desired nickname for the Anon Relay, contact information, comma-separated fingerprints for your relay's family (which can be skipped), BandwidthRate in Mbit (which can be skipped), BandwidthBurst in Mbit (which can be skipped), and ORPort. Here's an example of the output you might see:
 
 ```bash
-sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ATOR-Development/anon-install/main/install.sh)"
+sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/anyone-protocol/anon-install/refs/heads/main/install.sh)"
 ```
 ...
 ```mathematics
@@ -41,9 +41,10 @@ Contributions to this script are welcome! If you'd like to contribute, please fo
 This script is licensed under the GPL-3.0 licence.
 
 ## Contact
-For questions or feedback, please contact the ATOR Development team at team@ator.io
+For questions or feedback, please contact the Anyone Development team at team@anyone.io
 
 ## External Resources
-[ATOR Website](https://ator.io)<br>
-[Anon Education and Documentation](https://educ.ator.io)<br>
-[ATOR-Development/ator-protocol GitHub Repository](https://github.com/ATOR-Development/ator-protocol)
+
+[Anyone Website](https://anyone.io)<br>
+[Anon Education and Documentation](https://docs.anyone.io)<br>
+[ANyONe Protocol/anyone-protocol GitHub](https://github.com/anyone-protocol)
