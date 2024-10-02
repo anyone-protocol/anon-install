@@ -33,6 +33,19 @@ done
 
 read -p "Enter your contact information for the Anon Relay: " CONTACT_INFO
 
+read -p "Do you want to link your Ethereum wallet address now? (yes/no): " HAS_ETH_WALLET
+if [[ "$HAS_ETH_WALLET" =~ ^[Yy][Ee][Ss]$ ]]; then
+    while true; do
+        read -p "Enter your Ethereum wallet address: " ETH_WALLET
+        if [[ "$ETH_WALLET" =~ ^0x[a-fA-F0-9]{40}$ ]]; then
+            CONTACT_INFO="$CONTACT_INFO @anon: $ETH_WALLET"
+            break
+        else
+            echo "Error: Invalid Ethereum wallet address format. Must start with '0x' followed by 40 hexadecimal characters."
+        fi
+    done
+fi
+
 read -p "Enter comma-separated fingerprints for your relay's family (leave empty to skip): " MY_FAMILY
 
 while [[ -n "$MY_FAMILY" && ! "$MY_FAMILY" =~ ^([A-Z0-9]+,)*[A-Z0-9]+$ ]]; do
@@ -53,9 +66,17 @@ while true; do
         fi
 done
 
+read -p "If your Anon Relay does not use IPv6, you can disable it. Do you want to disable IPv6? (yes/no): " DISABLE_IPV6
+while ! [[ "$DISABLE_IPV6" =~ ^(yes|no)$ ]]; do
+    echo "Error: Invalid choice. Please enter 'yes' or 'no'."
+    read -p "If your Anon Relay does not use IPv6, you can disable it. Do you want to disable IPv6? (yes/no): " DISABLE_IPV6
+done
+
+# Writing the configuration file
 cat <<EOF | sudo tee /etc/anon/anonrc >/dev/null
 Log notice file /var/log/anon/notices.log
-ORPort $OR_PORT
+ORPort $OR_PORT $( [[ "$DISABLE_IPV6" == "yes" ]] && echo "IPv4Only")
+$( [[ "$DISABLE_IPV6" == "yes" ]] && echo "AddressDisableIPv6")
 ControlPort 9051
 SocksPort 0
 ExitRelay 0
