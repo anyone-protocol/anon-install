@@ -34,8 +34,9 @@ if [[ "$(uname)" == "Linux" ]];then
 
 	sleep 1
 
-	ExitIP="$(curl -s --socks5 127.0.0.1:9050 https://check.en.anyone.tech/api/ip -s | cut -d'"' -f6)"
-	IsAnon="$(curl -s --socks5 127.0.0.1:9050 https://check.en.anyone.tech/api/ip -s | cut -d':' -f2 | cut -d',' -f1)"
+    	CheckAnon=$(curl -s --socks5 127.0.0.1:9050 https://check.en.anyone.tech/api/ip)
+	ExitIP="$(echo $CheckAnon | cut -d'"' -f6)"
+	IsAnon="$(echo $CheckAnon | cut -d':' -f2 | cut -d',' -f1)"
 	ExitCountry="$(curl --socks4 127.0.0.1:9050 -s https://ipinfo.io | grep country | cut -d'"' -f4)"
 	echo -e "\nExit IP: $ExitIP\nExit Country: $ExitCountry\nIs Anon: $IsAnon\n"
 
