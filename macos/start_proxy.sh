@@ -17,7 +17,7 @@ if [[ "$(sw_vers --productName)" == "macOS" ]];then
     
     trap handle_sigint INT
     
-    unzip anon.zip anon > /dev/null 2>&1
+    unzip -o anon.zip anon > /dev/null 2>&1
     
     kill $(pgrep anon) > /dev/null 2>&1
     
