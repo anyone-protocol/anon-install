@@ -3,7 +3,7 @@
 if [[ "$(uname)" == "Linux" ]];then
 
 	if [[ ! -f anon-live-linux-$(dpkg --print-architecture).zip ]];then
-		curl -m 5 -o anon.zip -fsSLO https://github.com/anyone-protocol/ator-protocol/releases/download/v0.4.9.6/anon-live-linux-$(dpkg --print-architecture).zip
+		curl -m 5 -o anon.zip -fsSLO https://github.com/anyone-protocol/ator-protocol/releases/download/v0.4.9.7/anon-live-linux-$(dpkg --print-architecture).zip
 	fi
 
 	function handle_sigint() {
