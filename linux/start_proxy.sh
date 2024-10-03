@@ -12,7 +12,6 @@ if [[ "$(uname)" == "Linux" ]];then
 		gsettings reset org.gnome.system.proxy.socks port
 		rm anon.zip
 		rm anon
-  		rm anon-gencert
 		rm anonrc
 		exit 0
 	}
