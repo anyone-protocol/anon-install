@@ -24,7 +24,7 @@ if [[ "$(uname)" == "Linux" ]];then
 
 	echo -e "SocksPort 127.0.0.1:9050\nSocksPolicy accept 127.0.0.1\nSocksPolicy reject *\nHTTPTunnelPort auto" > anonrc
 
-	./anon -f anonrc &
+	./anon -f anonrc --accept-terms &
 
 	sleep 1
 
