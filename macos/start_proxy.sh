@@ -23,7 +23,7 @@ if [[ "$(sw_vers --productName)" == "macOS" ]];then
     
     echo -e "SocksPort 127.0.0.1:9050\nSocksPolicy accept 127.0.0.1\nSocksPolicy reject *\nHTTPTunnelPort 9058" > anonrc
     
-    ./anon -f anonrc &
+    ./anon -f anonrc --agree-to-terms &
     
     sleep 1
     
