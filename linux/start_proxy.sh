@@ -6,7 +6,7 @@ if [[ "$(uname)" == "Linux" ]];then
 		curl -o anon.zip -fsSLO https://github.com/anyone-protocol/ator-protocol/releases/download/v0.4.9.6/anon-live-linux-$(dpkg --print-architecture).zip
 	fi
 
-		function handle_sigint() {
+	function handle_sigint() {
 		gsettings set org.gnome.system.proxy mode "auto"
 		gsettings reset org.gnome.system.proxy.socks host
 		gsettings reset org.gnome.system.proxy.socks port
