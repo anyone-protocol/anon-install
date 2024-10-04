@@ -1,7 +1,6 @@
-version: '2.2'
 services:
   relay:
-    image: svforte/anon:latest
+    image: ghcr.io/anyone-protocol/ator-protocol:latest
     container_name: anon-relay
     init: true
     restart: unless-stopped
