@@ -10,3 +10,4 @@ ORPort 9001
 ExitRelay 0
 Nickname MyRelayNickname   # Between 1-19 characters, only [a-zA-Z0-9] and no spaces.
 ContactInfo <me@ianon.who>
+AgreeToTerms 1
