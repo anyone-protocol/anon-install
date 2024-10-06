@@ -36,7 +36,7 @@ if [[ "$(sw_vers --productName)" == "macOS" ]];then
   
   kill $(pgrep anon) > /dev/null 2>&1
   
-  echo -e "SocksPort 127.0.0.1:9050\nSocksPolicy accept 127.0.0.1\nSocksPolicy reject *\nHTTPTunnelPort 9058" > anonrc
+  echo -e "SocksPort 127.0.0.1:9050\nSocksPolicy accept 127.0.0.1\nSocksPolicy reject *\nHTTPTunnelPort auto" > anonrc
   
   ./anon -f anonrc --agree-to-terms | grep "Bootstrapped" &
   
