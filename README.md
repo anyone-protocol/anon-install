@@ -6,7 +6,7 @@ This repository contains an updated script for installing and configuring the An
 ## Installation
 To install the Anon Relay, run the following command in your terminal:
 ```bash
-sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/cl0ten/anon-install/refs/heads/main/install.sh)"
+sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/anyone-protocol/anon-install/refs/heads/main/install.sh)"
 ```
 This will download and execute the latest version of the installation script. 
 
@@ -42,7 +42,7 @@ If you choose to use UFW, the script will:
 Here's an example of the output from running the script:
 
 ```bash
-sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/cl0ten/anon-install/refs/heads/main/install.sh)"
+sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/anyone-protocol/anon-install/refs/heads/main/install.sh)"
 ```
 ```mathematics
 ...
