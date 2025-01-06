@@ -9,7 +9,7 @@ NOCOLOR='\033[0m'
 if [[ "$(sw_vers --productName)" == "macOS" ]];then
 
 	if [[ ! -f anon-live-macos-$(uname -p)64.zip ]];then
-		curl -m 5 -o anon.zip -fsSLO https://github.com/anyone-protocol/ator-protocol/releases/latest/download/anon-live-macos-$(uname -p)64.zip
+		curl -m 5 -fsSLO https://github.com/anyone-protocol/ator-protocol/releases/latest/download/anon-live-macos-$(uname -p)64.zip
 	fi
 
 	function handle_sig() {
