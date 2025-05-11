@@ -9,7 +9,7 @@ NOCOLOR='\033[0m'
 if [[ "$(uname)" == "Linux" ]];then
 
 	if [[ ! -f anon-live-linux-$(dpkg --print-architecture).zip ]];then
-		curl -m 30 -o anon-live-linux-$(dpkg --print-architecture).zip -fsSLO https://github.com/anyone-protocol/ator-protocol/releases/latest/download/anon-live-linux-$(dpkg --print-architecture).zip
+		curl -m 30 -fsSLO https://github.com/anyone-protocol/ator-protocol/releases/latest/download/anon-live-linux-$(dpkg --print-architecture).zip
 	fi
 
 	function handle_sig() {
