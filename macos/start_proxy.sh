@@ -16,7 +16,7 @@ if [[ "$(sw_vers --productName)" == "macOS" ]];then
 		networksetup -setsocksfirewallproxystate "Wi-Fi" off
 		
 		kill $(pgrep anon) > /dev/null 2>&1		
-		rm anon-live-macos-$(uname -p)64.zip anon anonrc
+		rm anon anonrc
 		
 		echo -e "\n${BLUE_ANON}======================================================${NOCOLOR}"
 		echo -e "${RED}                 ANON Proxy terminated                       ${NOCOLOR}"
