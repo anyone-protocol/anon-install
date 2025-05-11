@@ -9,7 +9,7 @@ NOCOLOR='\033[0m'
 if [[ "$(uname)" == "Linux" ]];then
 
 	if [[ ! -f anon-live-linux-$(dpkg --print-architecture).zip ]];then
-		curl -m 30 -o anon.zip -fsSLO https://github.com/anyone-protocol/ator-protocol/releases/latest/download/anon-live-linux-$(dpkg --print-architecture).zip
+		curl -m 30 -o anon-live-linux-$(dpkg --print-architecture).zip -fsSLO https://github.com/anyone-protocol/ator-protocol/releases/latest/download/anon-live-linux-$(dpkg --print-architecture).zip
 	fi
 
 	function handle_sig() {
@@ -18,7 +18,7 @@ if [[ "$(uname)" == "Linux" ]];then
 		gsettings reset org.gnome.system.proxy.socks port
 
 		kill $(pgrep anon) > /dev/null 2>&1
-		rm anon.zip
+		rm anon-live-linux-$(dpkg --print-architecture).zip
 		rm anon
 		rm anonrc
 
@@ -35,7 +35,7 @@ if [[ "$(uname)" == "Linux" ]];then
     echo -e "${BLUE_ANON}======================================================${NOCOLOR}\n"
 
 	kill $(pgrep anon) > /dev/null 2>&1
-	unzip -o anon.zip anon > /dev/null 2>&1
+	unzip -o anon-live-linux-$(dpkg --print-architecture).zip anon > /dev/null 2>&1
 	echo -e "SocksPort 127.0.0.1:9050\nSocksPolicy accept 127.0.0.1\nSocksPolicy reject *\nHTTPTunnelPort auto" > anonrc
 	./anon -f anonrc --agree-to-terms | grep Bootstrapped &
 	sleep 1
