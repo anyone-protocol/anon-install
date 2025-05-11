@@ -36,18 +36,18 @@ if [[ "$(uname)" == "Linux" ]];then
 
 	kill $(pgrep anon) > /dev/null 2>&1
 	unzip -o anon-live-linux-$(dpkg --print-architecture).zip anon > /dev/null 2>&1
-	echo -e "SocksPort 127.0.0.1:9050\nSocksPolicy accept 127.0.0.1\nSocksPolicy reject *\nHTTPTunnelPort auto" > anonrc
+	echo -e "SocksPort 127.0.0.1:9055\nSocksPolicy accept 127.0.0.1\nSocksPolicy reject *\nHTTPTunnelPort auto" > anonrc
 	./anon -f anonrc --agree-to-terms | grep Bootstrapped &
 	sleep 1
 	gsettings set org.gnome.system.proxy mode "manual"
 	gsettings set org.gnome.system.proxy.socks host "127.0.0.1"
-	gsettings set org.gnome.system.proxy.socks port 9050
+	gsettings set org.gnome.system.proxy.socks port 9055
 	sleep 1
 
-	CheckAnon=$(curl -s --socks5 127.0.0.1:9050 https://check.en.anyone.tech/api/ip)
+	CheckAnon=$(curl -s --socks5 127.0.0.1:9055 https://check.en.anyone.tech/api/ip)
 	ExitIP="$(echo $CheckAnon | cut -d'"' -f6)"
 	IsAnon="$(echo $CheckAnon | cut -d':' -f2 | cut -d',' -f1)"
-	ExitCountry="$(curl --socks4 127.0.0.1:9050 -s https://ipinfo.io | grep country | cut -d'"' -f4)"
+	ExitCountry="$(curl --socks4 127.0.0.1:9055 -s https://ipinfo.io | grep country | cut -d'"' -f4)"
 
 	echo -e "\n${BLUE_ANON}======================================================${NOCOLOR}\n"
 	echo -e "Exit IP: $ExitIP"
