@@ -18,7 +18,7 @@ if [[ "$(uname)" == "Linux" ]];then
 		gsettings reset org.gnome.system.proxy.socks port
 
 		kill $(pgrep anon) > /dev/null 2>&1
-		rm anon-live-linux-$(dpkg --print-architecture).zip
+		#rm anon-live-linux-$(dpkg --print-architecture).zip
 		rm anon
 		rm anonrc
 
