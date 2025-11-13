@@ -1,0 +1,92 @@
+services:
+  lighthouse:
+    image: sigp/lighthouse:latest
+    container_name: lighthouse
+    restart: unless-stopped
+    volumes:
+      - ./lighthouse-data:/root/.lighthouse
+      - ./jwt-secret:/jwt-secret:ro
+    networks:
+      - eth-anon-network
+    command:
+      - lighthouse
+      - beacon
+      - --network=sepolia
+      - --http
+      - --execution-endpoint=http://geth:8551
+      - --execution-jwt=/jwt-secret/jwt.hex
+      - --metrics
+      - --checkpoint-sync-url=https://sepolia.beaconstate.info
+
+  geth:
+    image: ethereum/client-go:latest
+    container_name: geth
+    restart: unless-stopped
+    ports:
+      - "8545:8545"
+    volumes:
+      - ./sepolia-data:/root/.ethereum
+      - ./jwt-secret/jwt.hex:/root/jwt-secret:ro
+    networks:
+      - eth-anon-network
+    command:
+      - --sepolia
+      - --syncmode=snap
+      - --http
+      - --http.addr=0.0.0.0
+      - --http.port=8545
+      - --http.api=eth,net,web3
+      - --http.corsdomain=*
+      - --http.vhosts=*
+      - --header=*
+      - --authrpc.jwtsecret=/root/jwt-secret/
+      - --authrpc.vhosts=*
+      - --authrpc.addr=0.0.0.0
+      - --authrpc.port=8551
+      - --cache=128
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8545/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  anonproxy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: anonproxy:latest
+    networks:
+      - eth-anon-network
+    pull_policy: build
+    container_name: anonproxy
+    init: true
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    environment:
+      - TZ=Europe/London
+    volumes:
+      - ./config:/etc/anon
+      - ./config/anon:/var/lib/anon
+    configs:
+      - source: anonrc
+        target: /etc/anon/anonrc
+
+configs:
+  anonrc:
+    content: |
+      ORPort 0
+      ControlPort 0
+      Log notice file /var/log/anon/notices.log
+      ExitRelay 0
+      SocksPort 0
+      SocksPolicy accept 0.0.0.0/0
+      AvoidDiskWrites 1
+      CookieAuthentication 0
+      AgreeToTerms 1
+      HiddenServiceDir /var/lib/anon/hidden_service/
+      HiddenServicePort 80 geth:8545
+
+networks:
+  eth-anon-network:
+    driver: bridge
