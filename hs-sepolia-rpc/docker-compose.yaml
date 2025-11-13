@@ -7,7 +7,7 @@ services:
       - ./lighthouse-data:/root/.lighthouse
       - ./jwt-secret:/jwt-secret:ro
     networks:
-      - eth-anon-network
+      - eth-lighthouse-network
     command:
       - lighthouse
       - beacon
@@ -22,12 +22,11 @@ services:
     image: ethereum/client-go:latest
     container_name: geth
     restart: unless-stopped
-    ports:
-      - "8545:8545"
     volumes:
       - ./sepolia-data:/root/.ethereum
       - ./jwt-secret/jwt.hex:/root/jwt-secret:ro
     networks:
+      - eth-lighthouse-network
       - eth-anon-network
     command:
       - --sepolia
@@ -89,4 +88,6 @@ configs:
 
 networks:
   eth-anon-network:
-    driver: bridge
+      driver: bridge
+  eth-lighthouse-network:
+      driver: bridge
