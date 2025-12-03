@@ -78,7 +78,7 @@ configs:
       ControlPort 0
       Log notice file /var/log/anon/notices.log
       ExitRelay 0
-      SocksPort 0
+      SocksPort 0 IsolateClientAddr IsolateClientProtocol IsolateDestAddr IsolateDestPort
       SocksPolicy accept 0.0.0.0/0
       AvoidDiskWrites 1
       CookieAuthentication 0
