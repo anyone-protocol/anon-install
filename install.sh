@@ -263,8 +263,10 @@ show_fingerprint
 
 cat /etc/anon/anonrc
 
-echo -e "${GREEN}\n==================================================${NOCOLOR}"
-echo -e "${BLUE_ANON}               Congratulations!                   ${NOCOLOR}"
-echo -e "${GREEN}   Anon configuration completed successfully.     ${NOCOLOR}"
-echo -e "${BLUE_ANON}            https://docs.anyone.io              ${NOCOLOR}"
-echo -e "${GREEN}==================================================${NOCOLOR}"
+echo -e "${GREEN}\n===================================================${NOCOLOR}"
+echo -e "${BLUE_ANON}                Congratulations!                   ${NOCOLOR}"
+echo -e "${GREEN}    Anon configuration completed successfully.       ${NOCOLOR}"
+echo -e "${BLUE_ANON}             https://docs.anyone.io              ${NOCOLOR}"
+echo -e "${RED}          Read the Operator Guidelines!                ${NOCOLOR}"
+echo -e "${BLUE_ANON}      https://docs.anyone.io/relay/guidelines    ${NOCOLOR}"
+echo -e "${GREEN}===================================================${NOCOLOR}"
